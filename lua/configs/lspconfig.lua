@@ -1,6 +1,11 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls" }
-vim.lsp.enable(servers)
+vim.lsp.config("ts_ls", {
+  filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+  root_markers = { "package.json", "tsconfig.json", ".git" },
+})
 
--- read :h vim.lsp.config for changing options of lsp servers 
+local servers = { "html", "cssls", "ts_ls" }
+
+vim.lsp.enable(servers)
+-- read :h vim.lsp.config for changing options of lsp servers
